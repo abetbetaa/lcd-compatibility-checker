@@ -50,35 +50,32 @@
     </table>
 </div>
 
-<script type="module">
-    // IMPORTANT: Make sure your data file is named data.js
-    import { lcdData } from './data.js';
+<script>
+    // Paste your data directly here
+    const lcdData = [
+        { model: "Realme C21", compat: "Realme C21Y, C25, C25s, Oppo A16", image: "" },
+        { model: "Samsung Galaxy A51", compat: "SM-A515F, SM-A515G, SM-A515U", image: "" }
+        // Add all your other models here...
+    ];
 
     const tableBody = document.getElementById('tableBody');
     const searchBar = document.getElementById('searchBar');
     const clearBtn = document.getElementById('clearBtn');
 
     function renderTable(data) {
-        // Colspan changed to 3 to match the 3 headers
         if (data.length === 0) {
             tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px; color:#999;">No matches found.</td></tr>';
             return;
         }
-
         tableBody.innerHTML = data.map(item => `
             <tr>
-                <td>
-                    <img src="${item.image || 'https://placehold.co/80x100?text=No+Photo'}" 
-                         class="lcd-thumb" 
-                         onclick="window.open(this.src)">
-                </td>
+                <td><img src="${item.image || 'https://placehold.co/80x100?text=No+Photo'}" class="lcd-thumb" onclick="window.open(this.src)"></td>
                 <td class="model-cell">${item.model}</td>
                 <td>${item.compat}</td>
             </tr>
         `).join('');
     }
 
-    // Search logic
     searchBar.addEventListener('input', () => {
         const query = searchBar.value.toLowerCase().trim();
         const filtered = lcdData.filter(item => 
@@ -88,18 +85,17 @@
         renderTable(filtered);
     });
 
-    // Clear button logic
     clearBtn.addEventListener('click', () => {
         searchBar.value = '';
         renderTable(lcdData);
         searchBar.focus();
     });
 
-    // Initial load
     renderTable(lcdData);
 </script>
 
 </body>
 
 </html>
+
 
