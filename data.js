@@ -1,8 +1,8 @@
 // import.js
 export const lcdData = [
     // REALME & OPPO (Very high compatibility)
-    { model: "Realme C21", compat: "Realme C21Y, C25, C25s, Oppo A16, Oppo A16s", image:"images/realmec21.2.png" },
-    { model: "Realme C11 (2021)", compat: "Realme C20, C11 2021, Narzo 50i, Oppo A15, A15s", image:"images/realmec11-2021.png" },
+    { model: "Realme C21", compat: "Realme C21Y, C25, C25s, Oppo A16, Oppo A16s", image:"realmec21.2.png" },
+    { model: "Realme C11 (2021)", compat: "Realme C20, C11 2021, Narzo 50i, Oppo A15, A15s", image:"realmec11-2021.png" },
     { model: "Realme 5", compat: "Realme 5i, 5s, 6i, C3, Narzo 10, Narzo 10A" },
     
     // XIAOMI / REDMI
@@ -31,4 +31,5 @@ export const lcdData = [
     // NOKIA
     { model: "Nokia C21 Plus", compat: "TA-1433, TA-1431, TA-1424" },
     { model: "Nokia 2.3", compat: "Nokia 2.2 (Some variants), TA-1206" }
+
 ];
