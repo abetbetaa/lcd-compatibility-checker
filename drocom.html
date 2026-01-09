@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCD Master Search</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; padding: 20px; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { margin: 0; color: #1a73e8; }
+        
+        /* Fixed Search Controls */
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        #searchBar { flex: 1; padding: 16px; font-size: 18px; border: 2px solid #e0e0e0; border-radius: 12px; outline: none; box-sizing: border-box; }
+        #searchBar:focus { border-color: #1a73e8; }
+        #clearBtn { padding: 0 20px; background: #f1f3f4; border: 1px solid #ccc; border-radius: 12px; cursor: pointer; font-weight: bold; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { text-align: left; padding: 15px; background: #f1f3f4; color: #5f6368; }
+        td { padding: 15px; border-bottom: 1px solid #f1f1f1; vertical-align: middle; }
+        .model-cell { font-weight: bold; color: #1a73e8; }
+        
+        /* Image Styling */
+        .lcd-thumb { width: 80px; height: auto; border-radius: 5px; border: 1px solid #ddd; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>LCD Compatibility by technohacks</h1>
+        <p>Search any Model or Part Number</p>
+    </div>
+    
+    <div class="controls">
+        <input type="text" id="searchBar" placeholder="Type to search (e.g., C21, Samsung A51...)">
+        <button id="clearBtn">Clear</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Photo</th> 
+                <th>Target Model</th>
+                <th>Compatible With</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
+
+<script type="module">
+    // IMPORTANT: Make sure your data file is named data.js
+    import { lcdData } from './data.js';
+
+    const tableBody = document.getElementById('tableBody');
+    const searchBar = document.getElementById('searchBar');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function renderTable(data) {
+        // Colspan changed to 3 to match the 3 headers
+        if (data.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px; color:#999;">No matches found.</td></tr>';
+            return;
+        }
+
+        tableBody.innerHTML = data.map(item => `
+            <tr>
+                <td>
+                    <img src="${item.image || 'https://placehold.co/80x100?text=No+Photo'}" 
+                         class="lcd-thumb" 
+                         onclick="window.open(this.src)">
+                </td>
+                <td class="model-cell">${item.model}</td>
+                <td>${item.compat}</td>
+            </tr>
+        `).join('');
+    }
+
+    // Search logic
+    searchBar.addEventListener('input', () => {
+        const query = searchBar.value.toLowerCase().trim();
+        const filtered = lcdData.filter(item => 
+            item.model.toLowerCase().includes(query) || 
+            item.compat.toLowerCase().includes(query)
+        );
+        renderTable(filtered);
+    });
+
+    // Clear button logic
+    clearBtn.addEventListener('click', () => {
+        searchBar.value = '';
+        renderTable(lcdData);
+        searchBar.focus();
+    });
+
+    // Initial load
+    renderTable(lcdData);
+</script>
+
+</body>
+</html>
