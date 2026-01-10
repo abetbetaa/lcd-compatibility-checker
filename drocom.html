@@ -9,19 +9,14 @@
         .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .header { text-align: center; margin-bottom: 30px; }
         .header h1 { margin: 0; color: #1a73e8; }
-        
-        /* Fixed Search Controls */
         .controls { display: flex; gap: 10px; margin-bottom: 20px; }
         #searchBar { flex: 1; padding: 16px; font-size: 18px; border: 2px solid #e0e0e0; border-radius: 12px; outline: none; box-sizing: border-box; }
         #searchBar:focus { border-color: #1a73e8; }
         #clearBtn { padding: 0 20px; background: #f1f3f4; border: 1px solid #ccc; border-radius: 12px; cursor: pointer; font-weight: bold; }
-        
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th { text-align: left; padding: 15px; background: #f1f3f4; color: #5f6368; }
         td { padding: 15px; border-bottom: 1px solid #f1f1f1; vertical-align: middle; }
         .model-cell { font-weight: bold; color: #1a73e8; }
-        
-        /* Image Styling */
         .lcd-thumb { width: 80px; height: auto; border-radius: 5px; border: 1px solid #ddd; cursor: pointer; }
     </style>
 </head>
@@ -51,11 +46,28 @@
 </div>
 
 <script>
-    // Paste your data directly here
+    // FULL DATA DIRECTLY IN HTML (Best for GitHub Pages)
     const lcdData = [
-        { model: "Realme C21", compat: "Realme C21Y, C25, C25s, Oppo A16", image: "" },
-        { model: "Samsung Galaxy A51", compat: "SM-A515F, SM-A515G, SM-A515U", image: "" }
-        // Add all your other models here...
+        { model: "Realme C21", compat: "Realme C21Y, C25, C25s, Oppo A16, Oppo A16s", image: "realmec21.2.png" },
+        { model: "Realme C11 (2021)", compat: "Realme C20, C11 2021, Narzo 50i, Oppo A15, A15s", image: "realmec11-2021.png" },
+        { model: "Realme 5", compat: "Realme 5i, 5s, 6i, C3, Narzo 10, Narzo 10A", image: "" },
+        { model: "Redmi Note 10 4G", compat: "Redmi Note 10S, Poco M5s (AMOLED versions)", image: "" },
+        { model: "Redmi 9", compat: "Redmi 9 Prime, Poco M2", image: "" },
+        { model: "Redmi 9A", compat: "Redmi 9C, Redmi 10A, Poco C3, Poco C31", image: "" },
+        { model: "Redmi Note 8", compat: "Redmi Note 8 (2019/2021 versions usually match)", image: "" },
+        { model: "Xiaomi Mi A3", compat: "Xiaomi CC9e", image: "" },
+        { model: "Samsung Galaxy A51", compat: "SM-A515F, SM-A515G, SM-A515U (Check Frame/No Frame)", image: "" },
+        { model: "Samsung Galaxy A10s", compat: "SM-A107F, SM-A107M", image: "" },
+        { model: "Samsung Galaxy A12", compat: "A12 Nacho, M12, A125F, A127F", image: "" },
+        { model: "Samsung Galaxy A02", compat: "Samsung M02, A022F", image: "" },
+        { model: "Samsung Galaxy J6 Plus", compat: "J4 Plus, J415, J610", image: "" },
+        { model: "Vivo Y20", compat: "Y20i, Y20s, Y12s, Y15s, Y21 (2021), Y30, Y50", image: "" },
+        { model: "Vivo Y91", compat: "Y93, Y95, Y91i, Y91c", image: "" },
+        { model: "Infinix Hot 10", compat: "Infinix Note 7 Lite, X682, X682B", image: "" },
+        { model: "Infinix Smart 5", compat: "Tecno Spark 6 Go, Spark 5 Air", image: "" },
+        { model: "Tecno Camon 15", compat: "Infinix S5 Pro", image: "" },
+        { model: "Nokia C21 Plus", compat: "TA-1433, TA-1431, TA-1424", image: "" },
+        { model: "Nokia 2.3", compat: "Nokia 2.2 (Some variants), TA-1206", image: "" }
     ];
 
     const tableBody = document.getElementById('tableBody');
@@ -93,9 +105,5 @@
 
     renderTable(lcdData);
 </script>
-
 </body>
-
 </html>
-
-
